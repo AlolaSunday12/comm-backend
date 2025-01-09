@@ -113,6 +113,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+// Get count
 router.get('/get/count', async (req, res) => {
     const {count} = req.body;
 
