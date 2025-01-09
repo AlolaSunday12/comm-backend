@@ -81,7 +81,7 @@ router.post('/', async (req, res) => {
     }
 });
 
-// update the order status by id
+// update the order status by Id
 router.put('/:id', async (req, res) => {
     const {id} = req.params;
     const { status } = req.body;
@@ -105,7 +105,7 @@ router.put('/:id', async (req, res) => {
     }
 });
 
-// Delete an order and OrderItem by id
+// Delete an order and OrderItem by Id
 router.delete('/:id', async (req, res) => {
     try {
         const order = await Order.findByIdAndDelete(req.params.id);
@@ -126,6 +126,7 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
+// get the total sales
 router.get('/get/totalsales', async (req, res)=> {
     const totalSales= await Order.aggregate([
         { $group: { _id: null , totalsales : { $sum : '$totalPrice'}}}
@@ -138,6 +139,7 @@ router.get('/get/totalsales', async (req, res)=> {
     res.send({totalsales: totalSales.pop().totalsales})
 });
 
+// Get the number of order
 router.get('/get/count', async (req, res) => {
     const {count} = req.body;
 
@@ -154,6 +156,7 @@ router.get('/get/count', async (req, res) => {
     }
 });
 
+// Get user order list
 router.get(`/get/userorders/:userid`, async (req, res) =>{
     const userOrderList = await Order.find({user: req.params.userid}).populate({ 
         path: 'orderItems', populate: {
