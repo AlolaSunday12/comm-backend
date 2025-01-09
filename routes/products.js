@@ -6,7 +6,7 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 
-
+// Multer configuration
 const FILE_TYPE_MAP = {
     'image/png': 'png',
     'image/jpeg': 'jpeg',
@@ -166,6 +166,7 @@ router.delete('/:id', async (req, res) => {
 
 });
 
+// Get the number of product
 router.get('/get/count', async (req, res) => {
     const {count} = req.body;
 
@@ -182,6 +183,7 @@ router.get('/get/count', async (req, res) => {
     }
 });
 
+// Feature
 router.get('/get/featured/:count', async (req, res) => {
 
     try {
@@ -198,6 +200,7 @@ router.get('/get/featured/:count', async (req, res) => {
     }
 })
 
+// update with images
 router.put(
     '/gallery-images/:id', 
     upload.array('images', 10), 
