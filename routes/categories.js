@@ -20,7 +20,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-// get single category by id
+// get single category by Id
 router.get('/:id', async (req, res) => {
     const {id} = req.params;
 
@@ -58,7 +58,7 @@ router.post(`/`, async (req, res) => {
     
 });
 
-// update the category by id
+// update the category by Id
 router.put('/:id', async (req, res) => {
     const {id} = req.params;
     const { name, icon, color} = req.body;
